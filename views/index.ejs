@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
+    />
+    <link rel="stylesheet" href="/style.css" />
+  </head>
+  <body>
+    <!DOCTYPE html>
+    <html lang="en">
+      <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Document</title>
+      </head>
+      <body>
+        <h1>Track your expenses</h1>
+
+        <form action="/addExpense" method="POST">
+          <input
+            type="number"
+            placeholder="($)Amount spent"
+            name="expenseAmt"
+          />
+          <input type="text" placeholder="Spent on" name="expenseType" />
+          <input type="submit" />
+        </form>
+
+        <ul class="expenses">
+          <% for(let i=0; i < info.length; i++) {%>
+          <li class="expense">
+            <span><%= info[i].expenseAmt %></span>
+            <span><%= info[i].expenseType %></span>
+            <!-- <span><%= info[i].likes %></span> -->
+            <!-- <span class="fa fa-thumbs-up"></span> -->
+            <span class="fa fa-trash"></span>
+          </li>
+          <% } %>
+        </ul>
+
+        <script src="/main.js"></script>
+      </body>
+    </html>
+  </body>
+</html>
