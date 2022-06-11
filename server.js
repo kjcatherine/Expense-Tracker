@@ -5,8 +5,7 @@ const PORT = 2120;
 require("dotenv").config();
 
 let db,
-  dbConnectionStr =
-    "mongodb+srv://hadash:Anuri967@cluster0.oical.mongodb.net/?retryWrites=true&w=majority",
+  dbConnectionStr = process.env.DB_STRING,
   dbName = "track-expenses";
 
 MongoClient.connect(dbConnectionStr, { useUnifiedTopology: true }).then(
@@ -37,6 +36,7 @@ app.post("/addExpense", (request, response) => {
     .insertOne({
       expenseAmt: request.body.expenseAmt,
       expenseType: request.body.expenseType,
+      likes: 0,
     })
     .then((result) => {
       console.log(result);
@@ -47,7 +47,7 @@ app.post("/addExpense", (request, response) => {
 });
 
 app.delete("/deleteExpense", (request, response) => {
-  db.collection("rappers")
+  db.collection("expense")
     .deleteOne({ expenseType: request.body.expenseTypeD })
     .then((result) => {
       console.log("Expense Deleted");

@@ -4,7 +4,11 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
+    <title>Track your spendings</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro:ital,wght@0,300;0,400;0,600;0,700;0,900;1,600;1,700;1,900&display=swap"
+      rel="stylesheet"
+    />
     <link
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
@@ -18,32 +22,48 @@
         <meta charset="UTF-8" />
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <title>Document</title>
+        <title>Expense Tracker</title>
       </head>
       <body>
-        <h1>Track your expenses</h1>
+        <nav class="navbar">
+          <h1 class="heading">Track Your Spendings</h1>
+        </nav>
 
-        <form action="/addExpense" method="POST">
-          <input
-            type="number"
-            placeholder="($)Amount spent"
-            name="expenseAmt"
-          />
-          <input type="text" placeholder="Spent on" name="expenseType" />
-          <input type="submit" />
-        </form>
+        <div class="form-wrapper">
+          <form action="/addExpense" method="POST">
+            <div class="input input1">
+              <input
+                type="text"
+                placeholder="($)Amount spent"
+                name="expenseAmt"
+              />
+            </div>
+
+            <div class="input spent">
+              <div class="input2">
+                <input type="text" placeholder="Spent on" name="expenseType" />
+              </div>
+
+              <div class="btn">
+                <button type="submit">Add</button>
+              </div>
+            </div>
+          </form>
+        </div>
 
         <ul class="expenses">
           <% for(let i=0; i < info.length; i++) {%>
           <li class="expense">
-            <span><%= info[i].expenseAmt %></span>
-            <span><%= info[i].expenseType %></span>
+            <span class="typeexp"><%= info[i].expenseType %></span>
+            <span class="amt"><%= info[i].expenseAmt %></span>
             <!-- <span><%= info[i].likes %></span> -->
             <!-- <span class="fa fa-thumbs-up"></span> -->
             <span class="fa fa-trash"></span>
           </li>
           <% } %>
         </ul>
+
+        <!-- <h3>Expense Total:</h3> -->
 
         <script src="/main.js"></script>
       </body>
