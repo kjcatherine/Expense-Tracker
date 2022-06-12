@@ -52,18 +52,20 @@
         </div>
 
         <ul class="expenses">
-          <% for(let i=0; i < info.length; i++) {%>
+          <% let total = 0 %> <% for(let i=0; i < info.length; i++) {%> <% total
+          += Number(info[i].expenseAmt) %>
           <li class="expense">
             <span class="typeexp"><%= info[i].expenseType %></span>
-            <span class="amt"><%= info[i].expenseAmt %></span>
+            <span class="amt">$<%= info[i].expenseAmt %></span>
             <!-- <span><%= info[i].likes %></span> -->
-            <!-- <span class="fa fa-thumbs-up"></span> -->
+            <!-- <span class="fa fa-edit"></span> -->
             <span class="fa fa-trash"></span>
           </li>
           <% } %>
         </ul>
         <div class="total">
-          <h3>Spend Total:</h3>
+          <h3>Spend Total</h3>
+          <h3 class="total-num">$<%= total %></h3>
         </div>
 
         <script src="/main.js"></script>

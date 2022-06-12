@@ -64,6 +64,7 @@ form {
   border: 1px solid rgb(3, 152, 3);
   border-radius: 4px;
   color: rgb(3, 152, 3);
+  cursor: pointer;
 }
 .btn button:hover {
   color: white;
@@ -92,12 +93,27 @@ form {
   color: rgb(253, 54, 54);
   border-radius: 3px;
   font-size: 1.3rem;
+  cursor: pointer;
 }
 .fa-trash:hover {
   color: white;
   background-color: rgb(253, 54, 54);
   transition: 0.5s;
 }
+.total {
+  display: flex;
+  justify-content: space-between;
+  font-size: 1.5rem;
+  border: 1px solid rgb(218, 211, 211);
+  padding: 1.3rem;
+  margin: 0 10rem;
+  border-radius: 4px;
+  color: green;
+}
+.total-num {
+  flex-basis: 8%;
+}
+
 @media screen and (max-width: 600px) {
   form {
     flex-direction: column;
@@ -125,10 +141,12 @@ form {
   .typeexp {
     flex-basis: 70%;
   }
-}
-.total {
-  margin: 2rem;
-  font-size: 1.5rem;
+  .total {
+    margin: 0 1rem;
+  }
+  .total-num {
+    flex-basis: 20%;
+  }
 }
 
 @media screen and (min-width: 601px) and (max-width: 1120px) {
@@ -156,5 +174,11 @@ form {
   }
   .typeexp {
     flex-basis: 70%;
+  }
+  .total {
+    margin: 0 3rem;
+  }
+  .total-num {
+    flex-basis: 19%;
   }
 }
