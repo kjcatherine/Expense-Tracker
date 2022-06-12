@@ -69,6 +69,7 @@ app.post("/addExpense", (request, response) => {
 //     .catch((error) => console.error(error));
 // });
 
+//Delete entry
 app.delete("/deleteExpense", (request, response) => {
   db.collection("expense")
     .deleteOne({ expenseType: request.body.expenseTypeD })
