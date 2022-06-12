@@ -32,17 +32,22 @@ app.get("/", (request, response) => {
 });
 
 app.post("/addExpense", (request, response) => {
-  db.collection("expense")
-    .insertOne({
-      expenseAmt: request.body.expenseAmt,
-      expenseType: request.body.expenseType,
-    })
-    .then((result) => {
-      console.log(result);
-      console.log("Expense Added");
-      response.redirect("/");
-    })
-    .catch((error) => console.error(error));
+  if (!request.body.expenseAmt && !request.body.expenseType) {
+    response.redirect("/");
+    return;
+  } else {
+    db.collection("expense")
+      .insertOne({
+        expenseAmt: request.body.expenseAmt,
+        expenseType: request.body.expenseType,
+      })
+      .then((result) => {
+        console.log(result);
+        console.log("Expense Added");
+        response.redirect("/");
+      })
+      .catch((error) => console.error(error));
+  }
 });
 
 // app.put("/editExpense", (request, response) => {
