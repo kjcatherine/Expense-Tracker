@@ -50,30 +50,6 @@ app.post("/addExpense", (request, response) => {
   }
 });
 
-// app.put("/editExpense", (request, response) => {
-//   db.collection("expense")
-//     .updateOne(
-//       {
-//         expenseType: request.body.expenseTypeD,
-//         expenseAmt: request.body.expenseAmtD,
-//       },
-//       {
-//         $set: {
-//           likes: request.body.likesS + 1,
-//         },
-//       },
-//       {
-//         sort: { _id: -1 },
-//         upsert: true,
-//       }
-//     )
-//     .then((result) => {
-//       console.log("Added One Like");
-//       response.json("Like Added");
-//     })
-//     .catch((error) => console.error(error));
-// });
-
 //Delete entry
 app.delete("/deleteExpense", (request, response) => {
   db.collection("expense")

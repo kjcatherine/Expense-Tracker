@@ -5,10 +5,13 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Track your spendings</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro:ital,wght@0,300;0,400;0,600;0,700;0,900;1,600;1,700;1,900&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500&family=Sacramento&display=swap"
       rel="stylesheet"
     />
+
     <link
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
@@ -26,48 +29,50 @@
       </head>
       <body>
         <nav class="navbar">
-          <h1 class="heading">Track Your Spendings</h1>
+          <h1 class="heading">Trackerly</h1>
+          <p>Track your spendings</p>
         </nav>
 
-        <div class="form-wrapper">
-          <form action="/addExpense" method="POST">
-            <div class="input input1">
-              <input
-                type="text"
-                placeholder="($)Amount spent"
-                name="expenseAmt"
-              />
-            </div>
+        <main class="main-container">
+          <div class="form-wrapper">
+            <h2>what did you spend on today?</h2>
+            <form action="/addExpense" method="POST">
+              <div class="input input1">
+                <input
+                  type="text"
+                  placeholder="($)Amount spent"
+                  name="expenseAmt"
+                />
+              </div>
 
-            <div class="input spent">
-              <div class="input2">
+              <div class="input input2">
                 <input type="text" placeholder="Spent on" name="expenseType" />
               </div>
 
               <div class="btn">
                 <button type="submit">Add</button>
               </div>
+            </form>
+          </div>
+
+          <ul class="expenses">
+            <li class="exp-header">Spendings List</li>
+            <% let total = 0 %> <% for(let i=0; i < info.length; i++) {%> <%
+            total += Number(info[i].expenseAmt) %>
+            <li class="expense">
+              <span class="typeexp"><%= info[i].expenseType %></span>
+              <span class="amt">$<%= info[i].expenseAmt %></span>
+              <!-- <span><%= info[i].likes %></span> -->
+              <!-- <span class="fa fa-edit"></span> -->
+              <span class="fa fa-trash"></span>
+            </li>
+            <% } %>
+            <div class="total">
+              <h3 class="total-text">You have spent a total of:</h3>
+              <h3 class="total-num">$<%= total %></h3>
             </div>
-          </form>
-        </div>
-
-        <ul class="expenses">
-          <% let total = 0 %> <% for(let i=0; i < info.length; i++) {%> <% total
-          += Number(info[i].expenseAmt) %>
-          <li class="expense">
-            <span class="typeexp"><%= info[i].expenseType %></span>
-            <span class="amt">$<%= info[i].expenseAmt %></span>
-            <!-- <span><%= info[i].likes %></span> -->
-            <!-- <span class="fa fa-edit"></span> -->
-            <span class="fa fa-trash"></span>
-          </li>
-          <% } %>
-        </ul>
-        <div class="total">
-          <h3>Spend Total</h3>
-          <h3 class="total-num">$<%= total %></h3>
-        </div>
-
+          </ul>
+        </main>
         <script src="/main.js"></script>
       </body>
     </html>

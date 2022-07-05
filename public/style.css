@@ -4,7 +4,7 @@
   box-sizing: border-box;
 }
 body {
-  background-color: rgb(249, 243, 243);
+  background-color: rgb(251, 251, 251);
   font-family: "Source Sans Pro", sans-serif;
 }
 
@@ -12,71 +12,110 @@ html {
   font-size: 62.5%;
 }
 .navbar {
-  background-color: rgb(3, 152, 3);
-  margin-bottom: 2rem;
+  display: flex;
+  align-items: center;
+  background-color: rgb(46, 246, 233);
+  margin-bottom: 5rem;
+  box-shadow: 0px 2.98256px 7.4564px rgb(23, 138, 133);
 }
 .navbar h1 {
-  padding: 1.5rem;
-  color: white;
-  font-size: 2.3rem;
-  font-weight: 600;
+  align-self: center;
+  margin-right: auto;
+  margin-left: 3rem;
+  color: #ed0d0d;
+  font-size: 4.3rem;
+  font-family: "Sacramento", cursive;
+  letter-spacing: 0.2rem;
 }
-
-form {
+.navbar p {
+  font-size: 1.6rem;
+  font-family: "Poppins", sans-serif;
+  font-weight: 500;
+  color: rgb(18, 18, 18);
+  margin-right: 3rem;
+}
+main {
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 100%;
-  margin-bottom: 3.5rem;
 }
-.spent {
+
+h2 {
+  font-size: 3.3rem;
+  font-family: "Sacramento", cursive;
+  font-weight: 200;
+  margin-bottom: 1rem;
+}
+.form-wrapper {
+  flex-basis: 40%;
   display: flex;
-  margin-left: 2.5rem;
-}
-.input {
-  width: 43.5%;
-}
-.input1 {
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
   position: relative;
-  left: 2rem;
+  left: 5rem;
 }
-.input2 {
-  flex-basis: 90%;
+.form-wrapper form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2rem;
+}
+
+.input {
+  width: 100%;
 }
 .input input {
   font-size: 1.5rem;
   width: 100%;
-  padding: 1.2rem;
+  padding: 1.2rem 15rem 2rem 1.2rem;
   border: 1px solid rgb(218, 211, 211);
   border-radius: 4px;
   outline: invert;
-  outline-color: rgb(67, 196, 67);
+  outline-color: rgb(46, 246, 233);
 }
 .btn {
-  width: 9%;
-  margin-right: 2rem;
+  width: 100%;
   border-radius: 4px;
 }
 .btn button {
   font-size: 1.5rem;
   width: 100%;
-  padding: 1.2rem;
-  border: 1px solid rgb(3, 152, 3);
+  padding: 1.2rem 8rem;
+  border: 1px solid rgb(46, 246, 233);
   border-radius: 4px;
-  color: rgb(3, 152, 3);
+  font-size: 1.5rem;
   cursor: pointer;
+  background-color: rgb(46, 246, 233);
+  text-align: center;
 }
 .btn button:hover {
-  color: white;
-  background-color: rgb(3, 152, 3);
+  color: rgb(22, 72, 69);
+  border: 2px solid rgb(46, 246, 233);
+  background-color: transparent;
   transition: 0.5s;
 }
+
 .expenses {
-  border: 1px solid rgb(218, 211, 211);
-  margin: 0 10rem;
+  flex-basis: 60%;
+  position: relative;
+  top: 5rem;
+  right: 3rem;
+  border-bottom: 1px solid rgb(218, 211, 211);
+  margin: 0 3em;
   border-radius: 4px;
 }
+.exp-header {
+  padding: 1.3rem;
+  border-bottom: 1px solid rgb(218, 211, 211);
+  color: rgb(16, 16, 16);
+  font-weight: 600;
+  font-size: 2rem;
+  list-style: none;
+  font-family: "Poppins", sans-serif;
+}
 .expense {
+  font-family: "Poppins", sans-serif;
   font-size: 1.7rem;
   display: flex;
   justify-content: space-between;
@@ -85,7 +124,7 @@ form {
   color: rgb(61, 61, 61);
 }
 .typeexp {
-  flex-basis: 90%;
+  flex-basis: 70%;
 }
 .fa-trash {
   border: 1px solid rgb(253, 54, 54);
@@ -104,81 +143,51 @@ form {
   display: flex;
   justify-content: space-between;
   font-size: 1.5rem;
-  border: 1px solid rgb(218, 211, 211);
+  font-family: "Poppins", sans-serif;
   padding: 1.3rem;
-  margin: 0 10rem;
   border-radius: 4px;
-  color: green;
+  color: rgb(16, 16, 16);
+  background-color: rgb(198, 251, 248);
+}
+.total-text {
+  flex-basis: 70%;
+  font-weight: 500;
 }
 .total-num {
-  flex-basis: 8%;
+  flex-basis: 20%;
+  color: rgb(22, 72, 69);
 }
 
-@media screen and (max-width: 600px) {
-  form {
+@media screen and (max-width: 700px) {
+  main {
     flex-direction: column;
   }
-  .input {
-    width: 95%;
-  }
-  .input1 {
+  .form-wrapper {
+    position: relative;
     left: 0;
-    margin-bottom: 1.5rem;
-  }
-  .input2 {
-    flex-basis: 85%;
-  }
-  .btn {
-    width: 15%;
-    margin-right: 0;
-  }
-  .spent {
-    margin-left: 0;
   }
   .expenses {
-    margin: 0 1rem;
-  }
-  .typeexp {
-    flex-basis: 70%;
-  }
-  .total {
-    margin: 0 1rem;
-  }
-  .total-num {
-    flex-basis: 20%;
+    right: 0;
+    margin: 0 0em;
   }
 }
 
-@media screen and (min-width: 601px) and (max-width: 1120px) {
-  .input {
-    width: 90%;
-  }
-  .input1 {
+@media screen and (min-width: 701px) and (max-width: 1250px) {
+  .form-wrapper {
     left: 1rem;
-    margin-left: 2rem;
-    margin-right: 1.5rem;
   }
 
-  .input2 {
-    flex-basis: 80%;
-  }
-  .btn {
-    width: 15%;
-    margin-right: 0;
-  }
-  .spent {
-    margin-left: 0;
-  }
   .expenses {
-    margin: 0 3rem;
+    right: 0rem;
+    flex-basis: 50%;
+    margin: 0 3em;
   }
-  .typeexp {
+
+  .total-text {
     flex-basis: 70%;
-  }
-  .total {
-    margin: 0 3rem;
+    font-weight: 500;
   }
   .total-num {
-    flex-basis: 19%;
+    flex-basis: 22%;
   }
 }
