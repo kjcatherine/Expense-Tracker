@@ -13,19 +13,20 @@ Array.from(editText).forEach((element) => {
   element.addEventListener("click", editEntry);
 });
 
-async function editEntry() {
-  const eType = this.parentNode.childNodes[1].innerText;
-  const eAmount = this.parentNode.childNodes[3].innerText;
-  hiddenCl.forEach((el) => (el.style.display = "block"));
-  inputs.forEach((el) => (el.style.display = "none"));
+async function editEntry(event) {
+  const expenseId = event.target.parentNode.chidren[2];
+  console.log(expenseId.value);
+}
 
+async function editExpense(id, amount, item) {
   try {
     const response = await fetch("editExpense", {
       method: "put",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({
-        expenseTypeE: eType,
-        expenseAmtE: eAmount,
+        id,
+        expenseTypeE: item,
+        expenseAmtE: amount,
       }),
     });
     const data = await response.json();
@@ -35,6 +36,29 @@ async function editEntry() {
     console.log(err);
   }
 }
+
+// async function editEntry() {
+//   const eType = this.parentNode.childNodes[1].innerText;
+//   const eAmount = this.parentNode.childNodes[3].innerText;
+//   hiddenCl.forEach((el) => (el.style.display = "block"));
+//   inputs.forEach((el) => (el.style.display = "none"));
+
+//   try {
+//     const response = await fetch("editExpense", {
+//       method: "put",
+//       headers: { "Content-Type": "application/json" },
+//       body: JSON.stringify({
+//         expenseTypeE: eType,
+//         expenseAmtE: eAmount,
+//       }),
+//     });
+//     const data = await response.json();
+//     console.log(data);
+//     window.location.reload(true);
+//   } catch (err) {
+//     console.log(err);
+//   }
+// }
 
 //DELETE FUNCTIONALITY
 Array.from(deleteText).forEach((element) => {

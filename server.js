@@ -1,6 +1,6 @@
 const express = require("express");
 const app = express();
-const { ObjectId } = require(mongodb);
+const { ObjectId } = require("mongodb");
 const MongoClient = require("mongodb").MongoClient;
 const PORT = 2120;
 require("dotenv").config();
@@ -29,15 +29,33 @@ app.get("/", (request, response) => {
     .toArray()
     .then((data) => {
       data.forEach((expense) => {
+        console.log(expense);
         expenses.push({
           id: ObjectId(expense._id),
-          info: expense.info,
+          expenseAmt: expense.expenseAmt,
+          expenseType: expense.expenseType,
         });
       });
       response.render("index.ejs", { info: expenses });
     })
     .catch((error) => console.error(error));
 });
+// app.get("/", (request, response) => {
+//   const expenses = [];
+//   db.collection("expense")
+//     .find()
+//     .toArray()
+//     .then((data) => {
+//       data.forEach((expense) => {
+//         expenses.push({
+//           id: ObjectId(expense._id),
+//           info: expense.info,
+//         });
+//       });
+//       response.render("index.ejs", { info: expenses });
+//     })
+//     .catch((error) => console.error(error));
+// });
 
 app.post("/addExpense", (request, response) => {
   if (!request.body.expenseAmt && !request.body.expenseType) {
