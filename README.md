@@ -15,7 +15,7 @@
 
 - Implement Edit functionality
 - Add date of entries
--Implement Login
+- Implement Login
 
 ## Lesson learned
 - How to use MongoDb to store and retrieve data and how to render html with EJS.
