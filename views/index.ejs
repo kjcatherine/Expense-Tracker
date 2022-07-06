@@ -53,8 +53,9 @@
         <li class="expense">
           <span class="typeexp"><%= info[i].expenseType %></span>
           <span class="amt">$<%= info[i].expenseAmt %></span>
+          <input class="hidden" value="<%= info[i].id %>" />
           <!-- <span><%= info[i].likes %></span> -->
-          <!-- <span class="fa fa-edit"></span> -->
+          <span class="fa fa-edit"></span>
           <span class="fa fa-trash"></span>
         </li>
         <% } %>

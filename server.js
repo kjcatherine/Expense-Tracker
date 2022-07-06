@@ -1,5 +1,6 @@
 const express = require("express");
 const app = express();
+const { ObjectId } = require(mongodb);
 const MongoClient = require("mongodb").MongoClient;
 const PORT = 2120;
 require("dotenv").config();
@@ -22,11 +23,18 @@ app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
 app.get("/", (request, response) => {
+  const expenses = [];
   db.collection("expense")
     .find()
     .toArray()
     .then((data) => {
-      response.render("index.ejs", { info: data });
+      data.forEach((expense) => {
+        expenses.push({
+          id: ObjectId(expense._id),
+          info: expense.info,
+        });
+      });
+      response.render("index.ejs", { info: expenses });
     })
     .catch((error) => console.error(error));
 });
