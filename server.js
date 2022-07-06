@@ -50,6 +50,25 @@ app.post("/addExpense", (request, response) => {
   }
 });
 
+//Edit entry
+app.put("/editExpense", (request, response) => {
+  db.collection("expense")
+    .updateOne(
+      { expenseType: request.body.expenseTypeE },
+      {
+        $set: {
+          expenseType: request.body.expenseTypeE,
+          expenseAmt: request.body.expenseAmtE,
+        },
+      }
+    )
+    .then((result) => {
+      response.redirect("/");
+      response.json("input edited");
+    })
+    .catch((error) => console.error(error));
+});
+
 //Delete entry
 app.delete("/deleteExpense", (request, response) => {
   db.collection("expense")

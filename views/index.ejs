@@ -19,62 +19,51 @@
     <link rel="stylesheet" href="/style.css" />
   </head>
   <body>
-    <!DOCTYPE html>
-    <html lang="en">
-      <head>
-        <meta charset="UTF-8" />
-        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <title>Expense Tracker</title>
-      </head>
-      <body>
-        <nav class="navbar">
-          <h1 class="heading">Trackerly</h1>
-          <p>Track your spendings</p>
-        </nav>
+    <nav class="navbar">
+      <h1 class="heading">Trackerly</h1>
+      <p>Track your spendings</p>
+    </nav>
 
-        <main class="main-container">
-          <div class="form-wrapper">
-            <h2>what did you spend on today?</h2>
-            <form action="/addExpense" method="POST">
-              <div class="input input1">
-                <input
-                  type="text"
-                  placeholder="($)Amount spent"
-                  name="expenseAmt"
-                />
-              </div>
-
-              <div class="input input2">
-                <input type="text" placeholder="Spent on" name="expenseType" />
-              </div>
-
-              <div class="btn">
-                <button type="submit">Add</button>
-              </div>
-            </form>
+    <main class="main-container">
+      <div class="form-wrapper">
+        <h2>what did you spend on today?</h2>
+        <form action="/addExpense" method="POST">
+          <div class="input input1">
+            <input
+              type="text"
+              placeholder="($)Amount spent"
+              name="expenseAmt"
+            />
           </div>
 
-          <ul class="expenses">
-            <li class="exp-header">Spendings List</li>
-            <% let total = 0 %> <% for(let i=0; i < info.length; i++) {%> <%
-            total += Number(info[i].expenseAmt) %>
-            <li class="expense">
-              <span class="typeexp"><%= info[i].expenseType %></span>
-              <span class="amt">$<%= info[i].expenseAmt %></span>
-              <!-- <span><%= info[i].likes %></span> -->
-              <!-- <span class="fa fa-edit"></span> -->
-              <span class="fa fa-trash"></span>
-            </li>
-            <% } %>
-            <div class="total">
-              <h3 class="total-text">You have spent a total of:</h3>
-              <h3 class="total-num">$<%= total %></h3>
-            </div>
-          </ul>
-        </main>
-        <script src="/main.js"></script>
-      </body>
-    </html>
+          <div class="input input2">
+            <input type="text" placeholder="Spent on" name="expenseType" />
+          </div>
+
+          <div class="btn">
+            <button type="submit">Add</button>
+          </div>
+        </form>
+      </div>
+
+      <ul class="expenses">
+        <li class="exp-header">Spend List</li>
+        <% let total = 0 %> <% for(let i=0; i < info.length; i++) {%> <% total
+        += Number(info[i].expenseAmt) %>
+        <li class="expense">
+          <span class="typeexp"><%= info[i].expenseType %></span>
+          <span class="amt">$<%= info[i].expenseAmt %></span>
+          <!-- <span><%= info[i].likes %></span> -->
+          <!-- <span class="fa fa-edit"></span> -->
+          <span class="fa fa-trash"></span>
+        </li>
+        <% } %>
+        <div class="total">
+          <h3 class="total-text">You have spent a total of:</h3>
+          <h3 class="total-num">$<%= total %></h3>
+        </div>
+      </ul>
+    </main>
+    <script src="/main.js"></script>
   </body>
 </html>
