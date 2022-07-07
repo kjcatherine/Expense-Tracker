@@ -22,8 +22,10 @@ app.use(express.static("public"));
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
+//Main Path
 app.get("/", (request, response) => {
   const expenses = [];
+
   db.collection("expense")
     .find()
     .toArray()
@@ -32,6 +34,7 @@ app.get("/", (request, response) => {
         console.log(expense);
         expenses.push({
           id: ObjectId(expense._id),
+          // entryDate: expense.entryDate,
           expenseAmt: expense.expenseAmt,
           expenseType: expense.expenseType,
         });
@@ -41,6 +44,7 @@ app.get("/", (request, response) => {
     .catch((error) => console.error(error));
 });
 
+//Create(post)
 app.post("/addExpense", (request, response) => {
   if (!request.body.expenseAmt && !request.body.expenseType) {
     response.redirect("/");
@@ -48,18 +52,18 @@ app.post("/addExpense", (request, response) => {
   } else {
     db.collection("expense")
       .insertOne({
+        entryDate: new Date(),
         expenseAmt: request.body.expenseAmt,
         expenseType: request.body.expenseType,
       })
       .then((result) => {
-        console.log(result);
-        console.log("Expense Added");
         response.redirect("/");
       })
       .catch((error) => console.error(error));
   }
 });
 
+//Edit Entry path
 app.put("/editExpense", (request, response) => {
   let updateData = {};
 
@@ -86,32 +90,11 @@ app.put("/editExpense", (request, response) => {
     .catch((error) => console.error(error));
 });
 
-//Edit entry
-// app.put("/editExpense", (request, response) => {
-
-//   db.collection("expense")
-//     .updateOne(
-//       { expenseType: request.body.expenseTypeE },
-//       {
-//         $set: {
-//           expenseType: request.body.expenseTypeE,
-//           expenseAmt: request.body.expenseAmtE,
-//         },
-//       }
-//     )
-//     .then((result) => {
-//       response.redirect("/");
-//       response.json("input edited");
-//     })
-//     .catch((error) => console.error(error));
-// });
-
 //Delete entry
 app.delete("/deleteExpense", (request, response) => {
   db.collection("expense")
     .deleteOne({ expenseType: request.body.expenseTypeD })
     .then((result) => {
-      console.log("Expense Deleted");
       response.json("Expense Deleted");
     })
     .catch((error) => console.error(error));

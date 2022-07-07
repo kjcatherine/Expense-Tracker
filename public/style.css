@@ -5,7 +5,7 @@
 }
 body {
   background-color: rgb(251, 251, 251);
-  font-family: "Source Sans Pro", sans-serif;
+  font-family: "Poppins", sans-serif;
 }
 
 html {
@@ -17,14 +17,9 @@ html {
   background-color: rgb(46, 246, 233);
   margin-bottom: 5rem;
   box-shadow: 0px 2.98256px 7.4564px rgb(23, 138, 133);
+  height: 7rem;
 }
-.update-section {
-  display: flex;
-  flex-direction: column;
-}
-.hidden {
-  display: none;
-}
+
 .navbar h1 {
   align-self: center;
   margin-right: auto;
@@ -36,7 +31,6 @@ html {
 }
 .navbar p {
   font-size: 1.6rem;
-  font-family: "Poppins", sans-serif;
   font-weight: 500;
   color: rgb(24, 135, 130);
   margin-right: 3rem;
@@ -45,32 +39,42 @@ main {
   display: flex;
   justify-content: center;
   align-items: center;
+  gap: 3rem;
 }
 
 h2 {
+  text-align: center;
   font-size: 3.3rem;
   font-family: "Sacramento", cursive;
   font-weight: 200;
   margin-bottom: 1rem;
 }
-.form-wrapper {
+.form-wrapper form-1 {
   flex-basis: 40%;
   display: flex;
   flex-direction: column;
   align-items: center;
-  width: 100%;
   position: relative;
   left: 5rem;
+  top: 5rem;
 }
-.form-wrapper form {
+.form-1 form,
+.form-2 form {
   display: flex;
   flex-direction: column;
   align-items: center;
   gap: 2rem;
 }
+.update-section {
+  display: flex;
+  flex-direction: column;
+}
+.hidden {
+  display: none;
+}
 
 .input {
-  width: 100%;
+  width: 90%;
 }
 .input input {
   font-size: 1.5rem;
@@ -82,7 +86,7 @@ h2 {
   outline-color: rgb(46, 246, 233);
 }
 .btn {
-  width: 100%;
+  width: 90%;
   border-radius: 4px;
 }
 .btn button {
@@ -97,6 +101,7 @@ h2 {
   text-align: center;
   letter-spacing: 0.1rem;
   color: rgb(20, 109, 104);
+  font-family: "Poppins", sans-serif;
 }
 .btn button:hover {
   color: rgb(23, 138, 133);
@@ -106,12 +111,11 @@ h2 {
 }
 
 .expenses {
-  flex-basis: 60%;
+  flex-basis: 50%;
   position: relative;
   top: 1rem;
-  right: 3rem;
+  margin: 0 3rem;
   border-bottom: 1px solid rgb(218, 211, 211);
-  margin: 0 3em;
   border-radius: 4px;
 }
 .exp-header {
@@ -121,10 +125,8 @@ h2 {
   font-weight: 500;
   font-size: 2.5rem;
   list-style: none;
-  font-family: "Poppins", sans-serif;
 }
 .expense {
-  font-family: "Poppins", sans-serif;
   font-size: 1.7rem;
   display: flex;
   justify-content: space-between;
@@ -148,54 +150,91 @@ h2 {
   background-color: rgb(253, 54, 54);
   transition: 0.5s;
 }
+.fa-edit {
+  color: rgb(23, 138, 133);
+  cursor: pointer;
+}
 .total {
   display: flex;
   justify-content: space-between;
   font-size: 1.5rem;
-  font-family: "Poppins", sans-serif;
   padding: 1.3rem;
   border-radius: 4px;
   color: rgb(24, 135, 130);
   background-color: rgb(198, 251, 248);
 }
 .total-text {
-  flex-basis: 70%;
+  flex-basis: 60%;
   font-weight: 500;
 }
 .total-num {
-  flex-basis: 20%;
+  flex-basis: 27%;
 }
 
 @media screen and (max-width: 700px) {
   main {
     flex-direction: column;
+    margin: 0 1rem;
   }
   .form-wrapper {
     position: relative;
     left: 0;
   }
+  .form-wrapper form-1 {
+    margin-bottom: 2rem;
+  }
+  .input,
+  .btn {
+    width: 100%;
+  }
+  .btn {
+    font-size: 1.7rem;
+  }
   .expenses {
+    width: 100%;
     right: 0;
     margin: 0 0em;
+  }
+  .expense {
+    font-size: 1.5rem;
+  }
+  .typeexp {
+    flex-basis: 60%;
+  }
+  .navbar h1 {
+    margin-left: 1rem;
+    font-size: 3.5rem;
+  }
+  .navbar p {
+    font-size: 1.5rem;
+    margin-right: 1rem;
+  }
+  .total-text {
+    flex-basis: 80%;
+  }
+  .total-num {
+    flex-basis: 20%;
   }
 }
 
 @media screen and (min-width: 701px) and (max-width: 1250px) {
   .form-wrapper {
-    left: 1rem;
+    left: 2rem;
   }
 
   .expenses {
     right: 0rem;
     flex-basis: 50%;
-    margin: 0 3em;
+    margin: 0 1rem;
   }
-
+  .typeexp {
+    flex-basis: 60%;
+  }
   .total-text {
-    flex-basis: 70%;
+    flex-basis: 60%;
     font-weight: 500;
   }
   .total-num {
-    flex-basis: 22%;
+    flex-basis: 35%;
   }
 }

@@ -1,9 +1,11 @@
 const deleteText = document.querySelectorAll(".fa-trash");
 const editText = document.querySelectorAll(".fa-edit");
-const hiddenCl = document.querySelectorAll(".hidden");
-const inputs = document.querySelectorAll("span");
+const postForm = document.querySelector(".form-1");
+const numInput = document.querySelector(".num-input");
+const textInput = document.querySelector(".text-input");
+const msg = document.querySelector("#msg");
 
-// update fields
+// Update fields
 const updateContainer = document.querySelector(".update-section");
 const updateAmount = document.querySelector(".update-section__amount");
 const updateType = document.querySelector(".update-section__type");
@@ -14,9 +16,9 @@ Array.from(editText).forEach((element) => {
   element.addEventListener("click", editEntry);
 });
 
+//Api request for Update
 async function editExpense(id, amount, item) {
   try {
-    console.log(id, amount, item);
     const response = await fetch("editExpense", {
       method: "put",
       headers: { "Content-Type": "application/json" },
@@ -26,24 +28,29 @@ async function editExpense(id, amount, item) {
         expenseAmt: amount,
       }),
     });
-    // window.location.reload(true);
+    window.location.reload(true);
   } catch (err) {
     console.log(err);
   }
 }
 
+//Edit function
 async function editEntry(event) {
   const itemType = event.target.parentNode.children[0];
   const amount = event.target.parentNode.children[1];
   const expenseId = event.target.parentNode.children[2];
-  console.log(expenseId.value, itemType.value, amount.value);
 
-  // toggle off hidden and add visible
+  // Hide first form
+  postForm.style.display = "none";
+
+  // Toggle off hidden and add visible for form 2
   updateContainer.classList.toggle("hidden");
 
-  // pass in the id, and updated field data
+  // Pass in id, and prepopulate field data
   updateAmount.value = amount.innerText;
+  updateType.value = itemType.innerText;
 
+  //Click event for update button
   updateBtn.addEventListener("click", async function (evt) {
     evt.preventDefault();
 
