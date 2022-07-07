@@ -18,6 +18,10 @@ html {
   margin-bottom: 5rem;
   box-shadow: 0px 2.98256px 7.4564px rgb(23, 138, 133);
 }
+.update-section {
+  display: flex;
+  flex-direction: column;
+}
 .hidden {
   display: none;
 }

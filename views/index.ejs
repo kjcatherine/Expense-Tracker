@@ -24,6 +24,7 @@
       <p>Track your spendings</p>
     </nav>
 
+    <!-- Form to display inputs -->
     <main class="main-container">
       <div class="form-wrapper">
         <h2>what did you spend on today?</h2>
@@ -44,7 +45,49 @@
             <button type="submit">Add</button>
           </div>
         </form>
+
+        <div class="hidden update-section">
+          <input
+            class="update-section__amount"
+            type="text"
+            placeholder="Update your amount spent"
+          />
+          <input
+            class="update-section__type"
+            type="text"
+            placeholder="Update the type of item"
+          />
+          <button class="update-section__btn">Update</button>
+        </div>
       </div>
+
+      <!-- Form inputs to update expenses -->
+      <!-- <div class="form-wrapper ">
+        <h2>Edit Entry</h2>
+        <form>
+          <div class="input input1 hidden update-section">
+            <input
+              class="update-section__amount"
+              type="text"
+              placeholder="($)Amount spent"
+              name="expenseAmt"
+            />
+          </div>
+
+          <div class="input input2">
+            <input
+              class="update-section__type"
+              type="text"
+              placeholder="Spent on"
+              name="expenseType"
+            />
+          </div>
+
+          <div class="btn">
+            <button class=".update-section__btn" type="submit">Edit</button>
+          </div>
+        </form>
+      </div> -->
 
       <ul class="expenses">
         <li class="exp-header">Spend List</li>
@@ -59,6 +102,7 @@
           <span class="fa fa-trash"></span>
         </li>
         <% } %>
+
         <div class="total">
           <h3 class="total-text">You have spent a total of:</h3>
           <h3 class="total-num">$<%= total %></h3>

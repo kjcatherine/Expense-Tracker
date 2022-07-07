@@ -40,22 +40,6 @@ app.get("/", (request, response) => {
     })
     .catch((error) => console.error(error));
 });
-// app.get("/", (request, response) => {
-//   const expenses = [];
-//   db.collection("expense")
-//     .find()
-//     .toArray()
-//     .then((data) => {
-//       data.forEach((expense) => {
-//         expenses.push({
-//           id: ObjectId(expense._id),
-//           info: expense.info,
-//         });
-//       });
-//       response.render("index.ejs", { info: expenses });
-//     })
-//     .catch((error) => console.error(error));
-// });
 
 app.post("/addExpense", (request, response) => {
   if (!request.body.expenseAmt && !request.body.expenseType) {
@@ -76,24 +60,51 @@ app.post("/addExpense", (request, response) => {
   }
 });
 
-//Edit entry
 app.put("/editExpense", (request, response) => {
+  let updateData = {};
+
+  if (request.body.expenseAmt !== "") {
+    updateData.expenseAmt = request.body.expenseAmt;
+  }
+
+  if (request.body.expenseType !== "") {
+    updateData.expenseType = request.body.expenseType;
+  }
+
   db.collection("expense")
     .updateOne(
-      { expenseType: request.body.expenseTypeE },
+      { _id: ObjectId(request.body.id) },
       {
-        $set: {
-          expenseType: request.body.expenseTypeE,
-          expenseAmt: request.body.expenseAmtE,
-        },
+        $set: updateData,
       }
     )
     .then((result) => {
-      response.redirect("/");
-      response.json("input edited");
+      response.status = 200;
+      response.json({ success: true, result });
+      response.send();
     })
     .catch((error) => console.error(error));
 });
+
+//Edit entry
+// app.put("/editExpense", (request, response) => {
+
+//   db.collection("expense")
+//     .updateOne(
+//       { expenseType: request.body.expenseTypeE },
+//       {
+//         $set: {
+//           expenseType: request.body.expenseTypeE,
+//           expenseAmt: request.body.expenseAmtE,
+//         },
+//       }
+//     )
+//     .then((result) => {
+//       response.redirect("/");
+//       response.json("input edited");
+//     })
+//     .catch((error) => console.error(error));
+// });
 
 //Delete entry
 app.delete("/deleteExpense", (request, response) => {
