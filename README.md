@@ -10,6 +10,7 @@
 - Mongodb
 - CSS custom properties
 - Js
+- Ejs
 
 ## Optimizations
 
