@@ -19,13 +19,13 @@ Array.from(editText).forEach((element) => {
 //Api request for Update
 async function editExpense(id, amount, item) {
   try {
-    const response = await fetch("editExpense", {
+    await fetch("editExpense", {
       method: "put",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({
         id,
         expenseType: item,
-        expenseAmt: amount,
+        expenseAmt: amount.replace("$", ""),
       }),
     });
     window.location.reload(true);
@@ -41,7 +41,6 @@ async function editEntry(event) {
   const expenseId = event.target.parentNode.children[2];
 
   // Hide first form
-  // postForm.style.display = "none";
   postForm.classList.toggle("hidden");
   // Toggle off hidden and add visible for form 2
   updateContainer.classList.toggle("hidden");

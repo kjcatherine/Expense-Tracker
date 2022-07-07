@@ -34,9 +34,9 @@ app.get("/", (request, response) => {
         console.log(expense);
         expenses.push({
           id: ObjectId(expense._id),
-          // entryDate: expense.entryDate,
           expenseAmt: expense.expenseAmt,
           expenseType: expense.expenseType,
+          // entryDate: expense.entryDate,
         });
       });
       response.render("index.ejs", { info: expenses });
