@@ -202,12 +202,12 @@ h2 {
     flex-basis: 60%;
   }
   .navbar h1 {
-    margin-left: 1rem;
+    margin-left: 2rem;
     font-size: 3.5rem;
   }
   .navbar p {
     font-size: 1.5rem;
-    margin-right: 1rem;
+    margin-right: 2rem;
   }
   .total-text {
     flex-basis: 80%;
