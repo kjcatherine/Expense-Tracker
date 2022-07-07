@@ -41,8 +41,8 @@ async function editEntry(event) {
   const expenseId = event.target.parentNode.children[2];
 
   // Hide first form
-  postForm.style.display = "none";
-
+  // postForm.style.display = "none";
+  postForm.classList.toggle("hidden");
   // Toggle off hidden and add visible for form 2
   updateContainer.classList.toggle("hidden");
 
