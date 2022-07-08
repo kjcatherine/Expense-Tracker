@@ -22,9 +22,22 @@ app.use(express.static("public"));
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
+
+
+
+
+
 //Main Path
 app.get("/", (request, response) => {
   const expenses = [];
+
+  //DATE FORMATTING
+  const formatDate = function (entryDate) {
+    const day = `${entryDate.getDate()}`.padStart(2, 0);
+    const month = `${entryDate.getMonth() + 1}`.padStart(2, 0);
+    const year = entryDate.getFullYear();
+    return `${day}/${month}/${year}`;
+  }
 
   db.collection("expense")
     .find()
@@ -34,9 +47,9 @@ app.get("/", (request, response) => {
         console.log(expense);
         expenses.push({
           id: ObjectId(expense._id),
+          entryDate: expense.entryDate,
           expenseAmt: expense.expenseAmt,
           expenseType: expense.expenseType,
-          // entryDate: expense.entryDate,
         });
       });
       response.render("index.ejs", { info: expenses });

@@ -38,7 +38,8 @@ async function editExpense(id, amount, item) {
 async function editEntry(event) {
   const itemType = event.target.parentNode.children[0];
   const amount = event.target.parentNode.children[1];
-  const expenseId = event.target.parentNode.children[2];
+  const itemDate = event.target.parentNode.children[2];
+  const expenseId = event.target.parentNode.children[3];
 
   // Hide first form
   postForm.classList.toggle("hidden");
