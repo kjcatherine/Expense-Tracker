@@ -1,6 +1,6 @@
 # expense-tracker-express-mongodb
 
-- A CRUD app where user can track thier spendings, see them displayed alongside the total spend, as well as delete entries.
+- A full-stack CRUD app where user can track thier spendings, see them displayed alongside the total spend, as well as delete entries.
 
 <img src='/public/trackerly.gif'>
 
@@ -14,7 +14,7 @@
 
 ## Optimizations
 
-- Implement Edit functionality
+- Implement Edit functionality - Done
 - Add date of entries
 - Implement Login
 
